@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>定点内容切换</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .content{
+            width: 600px;
+            height: 300px;
+            border: 1px #333 solid;
+            margin:5px auto;
+        }
+        .list{
+            width:50px;
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            
+        }
+        .list>ul{
+            list-style-type: none;
+        }
+        .list>ul>li{
+            height: 30px;
+            border: 1px solid #333;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+        }
+        .list>ul>li:hover{
+            background-color: #3ee2f8;
+        }
+        .active{
+            background-color: #3ee2f8;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">1</div>
+    <div class="content">2</div>
+    <div class="content">3</div>
+    <div class="content">4</div>
+    <div class="content">5</div>
+    <div class="content">6</div>
+    <div class="content">7</div>
+    <div class="content">8</div>
+    <div class="content">9</div>
+    <div class="content">10</div>
+    <div class="list">
+        <ul>
+            <li class="item active">1</li>
+            <li class="item">2</li>
+            <li class="item">3</li>
+            <li class="item">4</li>
+            <li class="item">5</li>
+            <li class="item">6</li>
+            <li class="item">7</li>
+            <li class="item">8</li>
+            <li class="item">9</li>
+            <li class="item">10</li>
+        </ul>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script>
+        //原生JS写法----->
+    //    window.onload = function(){
+    //      var itemli = document.getElementsByTagName("li");
+    //      var conall = document.getElementsByClassName('content');
+    //      console.log(conall);
+         
+    //        for (var i = 0; i < itemli.length; i++) {
+    //            (function (n) {
+    //                itemli[i].onclick = function () {
+    //                    //改变样式
+    //                    this.className += ' active';
+    //                    //清楚其他元素样式
+    //                     for(var j = 0;j<itemli.length;j++)
+    //                     {
+    //                         if(j==n)continue;
+    //                         else{
+    //                             itemli[j].className = 'item';
+    //                         }
+    //                     }
+    //                     //获取对应元素与文档高度
+    //                     var height = conall[n].offsetTop;
+    //                     document.documentElement.scrollTop = height;
+    //                }
+    //            })(i)
+    //        }
+    //    }
+        //JQ简洁写法------>
+        $('.item').click(function(){
+            //找到元素下标
+            var index = $(this).index();
+            $(this).addClass('active').siblings().removeClass('active');
+            //获取对应元素与文档顶部高度
+            var height = $('.content').eq(index).offset().top;
+            //动画形式改变滑动内容
+            $('html,body').animate({scrollTop:height+"px"},1000);
+        })
+    </script>
+</body>
+</html>
