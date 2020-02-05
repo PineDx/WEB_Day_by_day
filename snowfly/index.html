@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>雪花飘落</title>
+    <style>
+    body{
+        margin: 0;
+        padding: 0;
+    }
+    header{
+        width: 100%;
+        height: 314px;
+        background: url(./images/header-bg.png);
+    }
+    section{
+        width: 913px;
+        height:inherit;
+        margin: 0 auto;
+        background: url(./images/con-bg.png) no-repeat 0 204px,url(./images/snow-bg.png);
+        animation: auto 20s linear infinite;
+    }
+    @keyframes auto{
+        from{
+            background-position-y: 204px,0px;
+        }
+        to{
+            background-position-y: 204px,800px;
+        }
+    }
+    tree,ice{
+        display: block;
+        animation: into;
+        position: absolute;
+    }
+    ice{
+        width: 120px;
+        height: 97px;
+        top:210px;
+        left: 669px;
+         animation-duration: 0.7s;
+        background: url(./images/ice.png);
+    }
+    tree{
+         width: 112px;
+        height: 132px;
+        background: url(./images/tree.png);
+        
+    }
+    tree:nth-child(1){
+        top: 110px;
+        left: 875px;
+        animation-duration: 0.8s;
+    }
+    tree:nth-child(2){
+        top: 180px;
+        left: 500px;
+         animation-duration: 0.6s;
+    }
+    tree:nth-child(3){
+        top: 125px;
+        left: 600px;
+         animation-duration: 0.9s;
+    }
+    tree:nth-child(4){
+         top: 166px;
+        left: 770px;
+         animation-duration: 1s;
+    }
+    tree:nth-child(5){
+         top: 170px;
+        left: 940px;
+         animation-duration: 0.8s;
+    }
+    tree:nth-child(6){
+         top: 123px;
+        left: 410px;
+         animation-duration: 0.9s;
+    }
+    @keyframes into{
+        from{
+            transform: translate(0,-300px);
+        }
+        to{
+            transform: translate(0,0);
+        }
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <section>
+            <tree></tree>
+            <tree></tree>
+            <tree></tree>
+            <tree></tree>
+            <tree></tree>
+            <tree></tree>
+            <ice></ice>
+        </section>
+    </header>
+</body>
+</html>
