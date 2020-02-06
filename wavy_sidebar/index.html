@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>波浪导航栏练习</title>
+    <style>
+    body{
+        margin: 0;
+        padding: 0;
+        background-color: #4dbdfd;
+    }
+    #sidebar{
+        width: 150px;
+        position: fixed;
+        top:100px;
+        right: -115px;
+    }
+    .bar-list{
+        list-style-type: none;
+        margin: 0;
+        padding: 3px;
+    }
+    .item{
+        width: 100%;
+        height: 40px;
+        border-bottom: 1px solid #a2f6fc;
+        background-color: linen;
+        cursor:pointer;
+        position: relative;
+        left: 0;
+    }
+    .item:last-child{
+        border: 0;
+    }
+    .item>span{
+        font-size: 18px;
+        font-weight: 600;
+        display: inline-block;
+        width: 30px;
+        text-align: center;
+        line-height: 40px;
+        border-radius: 2px;
+        background-color: rgb(42, 90, 250);
+    }
+    .item>strong{
+        margin-left: 5px;
+        font-size: 14px;
+        font-weight: 600;
+    }
+    .item:hover span{
+        color: rgb(41, 78, 243);
+        background-color: rgb(188, 232, 253);
+    }
+    .item:hover strong{
+        color: rgb(41, 78, 243);
+    }
+    </style>
+</head>
+
+<body>
+    <div id="sidebar">
+        <ul class="bar-list">
+            <li class="item">
+                <span>0</span>
+                <strong>HTML</strong>
+            </li>
+            <li class="item">
+                <span>1</span>
+                <strong>JAVASCRIPT</strong>
+            </li>
+            <li class="item">
+                <span>2</span>
+                <strong>NODE.JS</strong>
+            </li>
+            <li class="item">
+                <span>3</span>
+                <strong>WEBPACK</strong>
+            </li>
+            <li class="item">
+                <span>4</span>
+                <strong>TYPESCRIPT</strong>
+            </li>
+            <li class="item">
+                <span>5</span>
+                <strong>PHP</strong>
+            </li>
+            <li class="item">
+                <span>6</span>
+                <strong>JAVA</strong>
+            </li>
+            <li class="item">
+                <span>7</span>
+                <strong>THINKPHP</strong>
+            </li>
+            <li class="item">
+                <span>8</span>
+                <strong>JAVASPRING</strong>
+            </li>
+            <li class="item">
+                <span>9</span>
+                <strong>PYTHON</strong>
+            </li>
+            <li class="item">
+                <span>10</span>
+                <strong>ELEMENTUI</strong>
+            </li>
+            <li class="item">
+                <span>11</span>
+                <strong>VUE.JS</strong>
+            </li>
+            <li class="item">
+                <span>12</span>
+                <strong>PHPWEB</strong>
+            </li>
+        </ul>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script type="text/javascript">
+        // var left = 0;
+        // var oli = document.getElementsByClassName('item');
+        // var timer = setInterval(() => {
+        //     left --;            
+        //     if(left==-115) clearInterval(timer);
+        //     [].forEach.call(oli,function(el){
+        //         el.style.left = left + "px";
+        //     })
+        // }, 5);
+
+
+
+        $('#sidebar').hover(()=>{
+            $('.item').each(function(index){
+                setTimeout(()=>{
+                    $(this).animate({left:-115});
+                },index*50)
+            })
+        },()=>{
+            $('.item').each(function (index) {
+                    setTimeout(() => {
+                        $(this).animate({ left: 0 });
+                    }, index * 40)
+                })
+        })
+    </script>
+</body>
+
+</html>
