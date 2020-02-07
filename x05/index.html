@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>简单使用qrcode插件生成二维码</title>
+    <style>
+    body{
+        margin: 0;
+        padding: 0;
+    }
+    p{
+        display: block;
+        margin: 10px;
+        height: 50px;
+    }
+    span{
+        display: block;
+        width: 100px;
+    }
+    #btn{
+        width: 200px;
+        height: 50px;
+        background-color: rgb(48, 127, 230);
+        border: 0;
+        box-shadow: 0px 5px 20px #000;
+    }
+    .qrcode{
+        width: 300px;
+        height: 300px;
+        border: 1px solid #000;
+        position: absolute;
+        top: 10px;
+        left: 300px;
+    }
+    #btn:hover{
+        transform: scale(0.95);;
+    }
+    </style>
+</head>
+<body>
+    <p>
+        <span>
+            name:
+        </span>
+        <input type="text" size="25"  class="name">    
+    </p>
+    <p>
+        <span>
+            school:
+        </span>
+        <input type="text" size="25"  class="school">
+    </p>
+    <p>
+        <span>
+            email:
+        </span>
+        <input type="text" size="25"  class="email">
+    </p>
+    <p>
+        <span>
+            telephone:
+        </span>
+        <input type="text" size="25"  class="telephone">
+    </p>
+    <p>
+        <span>
+            address:
+        </span>
+        <input type="text" size="25"  class="address"> 
+    </p>
+
+    <button id="btn">生成二维码</button>
+    <div class="qrcode">
+
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+    <script>
+      $('#btn').click(()=>{
+          //获取所有变量
+            var name = "name:"+$('.name').val();
+            var school = "school:" +$('.school').val();
+            var email = "email:" +$('.email').val();
+            var telephone = "telephone:" +$('.telephone').val();
+            var address = "address:" +$('.address').val();
+
+            //拼接整条信息
+            var text = name+school+email+telephone+address;
+            //通过qcode插件来生成二维码
+            $('.qrcode').qrcode({ width: 300, height: 300, text: text });
+      });
+      
+    </script>
+</body>
+</html>
