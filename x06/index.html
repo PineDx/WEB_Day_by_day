@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #347ad4;
+
+        }
+
+        .wrap {
+            width: 1000px;
+            height: 700px;
+            margin: 50px auto;
+        }
+
+        .wrap li {
+            position: relative;
+            width: 180px;
+            height: 105px;
+            background-color: rgba(255 , 255, 255, 0.3);
+            list-style-type: none;
+            float: left;
+            margin: 60px 5px;
+        }
+
+        .wrap .hedge {
+            margin-left: 100px;
+        }
+        .wrap li::before{
+            content: '';
+            position:absolute;
+            top: 0;
+            left: 0;
+            width: 180px;
+            height: 105px;
+            background-color: rgba(255, 255, 255,.3);
+            transform: rotate(60deg);
+        }
+        .wrap li::after{
+            content: '';
+            position:absolute;
+            top: 0;
+            left: 0;
+            width: 180px;
+            height: 105px;
+            background-color: rgba(255, 255, 255,.3);
+            transform: rotate(-60deg);
+        }
+        img{
+            position: absolute;
+            top: 10px;
+            left: 50px;
+            height:80px;
+            width:80px;
+            z-index: 100;
+        }
+        .wrap img:hover{
+            transform: rotate(360deg) scale(0.8);
+            transition: ease-out 1s;
+        }
+    </style>
+    <title>多边形旋转缩进动画</title>
+</head>
+
+<body>
+    <div class="wrap">
+        <ul>
+            <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/rhinoceros.svg" alt=""></li>
+            <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/pinterest.svg" alt=""></li>
+            <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/debian.svg" /></li>
+            <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/ferrari.svg" alt=""></li>
+            <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/soundcloud.svg" alt=""></li>
+            <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/bower.svg" alt=""></li>
+            <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/html5.svg" alt=""></li>
+            <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/wprocket.svg" alt=""></li>
+            <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/zalando.svg" alt=""></li>
+            <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/rabbitmq.svg" alt=""></li>
+            <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/swarm.svg" alt=""></li>
+            <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/rss.svg" alt=""></li>
+            <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/qzone.svg" alt=""></li>
+            <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/snapchat.svg" alt=""></li>
+        </ul>
+    </div>
+</body>
+
+</html>
