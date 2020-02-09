@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拖动滑块认证</title>
+    <style>
+        body{
+            user-select: none;
+        }
+        .wrap{
+            width: 300px;
+            height: 45px;
+            background-color:rgb(196, 193, 193);
+            margin: 50px auto;
+            position: relative;
+        }
+        .box{
+            position: relative;
+            text-align: center;
+            line-height: 45px;
+            color: #000;
+            font-size: 18px;
+            font-weight: 600px;
+            border: 1px solid #ccc;
+        }
+        .slide{
+            box-sizing: border-box;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 45px;
+            height: 45px;
+            background-color: #fff;
+            border: 1px solid rgb(255, 255, 255);
+        }
+        .bg{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: rgb(37, 192, 44);
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="bg"></div>
+        <div class="box">
+            滑块认证小案列
+            <div class="slide"><img src="img/right.png" alt=""></div>
+        </div>
+    </div>
+    <script>
+        var oSlide = document.querySelector('.slide');
+        var obg = document.querySelector('.bg');
+        var obox = document.querySelector('.box');
+        var _x;
+
+        //鼠标按下事件  执行函数
+        oSlide.onmousedown = function(e){
+            //获取元素距离x轴距离
+            var initX = e.clientX;
+            var _flag = true;
+            document.onmousemove = function(e){
+                var moveX = e.clientX; //获取移动后的x值
+                 _x = moveX - initX; // 最终变化的x值
+                if(_flag===false)return;
+                if(_x < 0)_x = 0; //等于0时 默认为0
+                if(_x > 253)_x = 253;
+                oSlide.style.left = _x + "px";
+                obg.style.width = _x + "px" ;
+                if(_x >= 253){
+                    obox.style.color = '#fff';
+                    _flag = false;
+                }
+                if(!_flag)
+                {
+                    oSlide.onmousedown = null;
+                    document.onmousemove = null;
+                    return;
+                }
+            };
+        };
+        document.onmouseup = function(){
+            if(_x < 253){
+                document.onmousemove = null;
+                oSlide.style.left = "0px";
+                obg.style.width = "0px";
+            }
+        }
+    </script>
+</body>
+</html>
