@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鼠标方位判断</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 1200px;
+            height: 360px;
+            border: 1px solid #000;
+            margin: 80px auto;
+        }
+
+        ul {
+            width: 100%;
+            height: 300px;
+            list-style-type: none;
+            margin: 0;
+            padding: 0px;
+        }
+
+        .box ul li {
+            width: 230px;
+            height: 360px;
+            background-color: antiquewhite;
+            float: left;
+            margin-left: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .box ul li a {
+            display: block;
+            width: 230px;
+            height: 360px;
+            background-color: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            top: 360px;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul>
+            <li><img src="./1.jpg" alt=""><a href="#"></a></li>
+            <li><img src="./2.jpg" alt=""><a href="#"></a></li>
+            <li><img src="./3.jpg" alt=""><a href="#"></a></li>
+            <li><img src="./4.jpg" alt=""><a href="#"></a></li>
+            <li><img src="./5.jpg" alt=""><a href="#"></a></li>
+        </ul>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script>
+        $('.box ul li').hover(function (e) {
+            {
+                var _x = e.clientX;
+                var _y = e.clientY;
+
+                var w = $(this).width();
+                var h = $(this).height();
+
+                var t = $(this).offset().top;
+                var l = $(this).offset().left;
+                var b = h + t;
+                var r = w + l;
+
+
+                var sT = Math.abs(_y - t);
+                var sL = Math.abs(_x - l);
+                var sR = Math.abs(_x - r);
+                var sB = Math.abs(_y - b);
+
+                var device = Math.min(sT, sR, sL, sB);
+
+                switch (device) {
+                    case sT:
+                        $(this).find('a').css({
+                            top: '-360px',
+                            left: 0
+                        }).animate({
+                            top: 0
+                        }, 300)
+                        break;
+                    case sR:
+                        $(this).find('a').css({
+                            top: 0,
+                            left: '460px'
+                        }).animate({
+                            left: 0
+                        }, 300)
+                        break;
+                    case sL:
+                        $(this).find('a').css({
+                            top: 0,
+                            left: '-270px'
+                        }).animate({
+                            left: 0
+                        }, 300)
+                        break;
+                    case sB:
+                        $(this).find('a').css({
+                            top: '360px',
+                            left: 0
+                        }).animate({
+                            top: 0
+                        }, 300)
+                        break;
+                }
+
+            }
+        }, function (e) {
+            var _x = e.clientX;
+            var _y = e.clientY;
+
+            var w = $(this).width();
+            var h = $(this).height();
+
+            var t = $(this).offset().top;
+            var l = $(this).offset().left;
+            var b = h + t;
+            var r = w + l;
+
+            var oT = Math.abs(_y - t);
+            var oL = Math.abs(_x - l);
+            var oR = Math.abs(_x - r);
+            var oB = Math.abs(_y - b);
+
+            var device = Math.min(oT, oR, oL, oB);
+
+            switch (device) {
+                case oT:
+                    $(this).find('a').animate({
+                        top: '-360px'
+                    }, 150)
+                    break;
+                case oR:
+                    $(this).find('a').animate({
+                        left: '460px'
+                    }, 150)
+                    break;
+                case oL:
+                    $(this).find('a').animate({
+                        left: '-270px'
+                    }, 150)
+                    break;
+                case oB:
+                    $(this).find('a').animate({
+                        top: '360px'
+                    }, 150)
+                    break;
+            }
+        })
+    </script>
+</body>
+
+</html>
