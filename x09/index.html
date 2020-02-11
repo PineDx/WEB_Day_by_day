@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鼠标跟随图片切换</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style-type: none;
+        }
+        img{
+            display: block;
+        }
+        .box{
+            width: 800px;
+            height: 280px;
+            background-color: antiquewhite;
+            margin: 100px auto;
+            padding: 15px;
+
+        }
+        .limg{
+            width: 670px;
+            height: 280px;
+           float: left;
+           position: relative;
+        }
+        .limg ul li {
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: none;
+        }
+        .rimg{
+            position: relative;
+            width: 100px;
+            height: 280px;
+            float: left;
+            margin-left: 20px;
+        }
+        .rimg ul li{
+            margin-top: 15px;
+            z-index: 5;
+        }
+        .cur{
+            position: absolute;
+            width:130px;
+            height: 60px;
+            top: 10px;
+            left: -15px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="box">
+        <div class="limg">
+            <ul>
+                <li style="display: block;"><img src="./images/a1.jpg" alt=""></li>
+                <li><img src="./images/a2.jpg" alt=""></li>
+                <li><img src="./images/a3.jpg" alt=""></li>
+                <li><img src="./images/a4.jpg" alt=""></li>
+            </ul>
+        </div>
+        <div class="rimg">
+            <ul>
+                <li><img src="./images/a1_l.jpg" alt=""></li>
+                <li><img src="./images/a2_l.jpg" alt=""></li>
+                <li><img src="./images/a3_l.jpg" alt=""></li>
+                <li><img src="./images/a4_l.jpg" alt=""></li>
+            </ul>
+            <div class="cur">
+                <img src="./images/hover.png" alt="">
+            </div>
+        </div>
+    </div>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+<script>
+    var index = 0;
+    $('.rimg ul li').hover(function(){
+        index = $(this).index();
+        $('.limg ul li').eq(index).fadeIn().siblings().fadeOut();
+        $('.cur').stop().animate({'top':10+index*65},200)
+    })
+</script>
+</body>
+</html>
