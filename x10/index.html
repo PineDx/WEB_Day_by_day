@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>相册翻页</title>
+    <style>
+        .wrap{
+            position: relative;
+            width:700px;
+            height:450px;
+            margin: 50px auto;
+            background-image: url(./bfanye0.jpg);
+            perspective: 1000px;
+            /* box-shadow: 5px 5px 10px #333; */
+        }
+        .left, .right{
+            position: absolute;
+            top:0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+
+        }
+        .left{
+            transform-origin:left;
+            transform-style: preserve-3d;
+            z-index: 1;
+
+        }
+        .on{
+            transform: rotateY(-180deg);
+            transition: 1.5s;
+        }
+        .pre, .next{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height:450px;
+        }
+        .pre{
+            background: url(./bfanye0.jpg) no-repeat right top;
+        }
+        .next{
+            background: url(./bfanye1.jpg) no-repeat left top;
+            transform: scale(-1,1) translateZ(-1px) ;
+        }
+        .right{
+            background: url(./bfanye1.jpg) no-repeat right top;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="left">
+            <div class="pre"></div>
+            <div class="next"></div>
+        </div>
+        <div class="right">
+        </div>
+    </div>
+
+    <script>
+        (function(){
+            var oWrip = document.querySelector('.wrap'),
+                oLeft = document.querySelector('.left'),
+                oPre = document.querySelector('.pre'),
+                oNext = document.querySelector('.next'),
+                oRight = document.querySelector('.right');
+            var index = 0;
+            var flag = false;
+            auto();
+            function auto(){
+                setInterval(change,3000);
+            }
+            oWrip.onclick = change;
+           function change(){
+                if(flag) return;
+                index++;
+                index %= 4;
+               flag = true;
+              oLeft.classList.add('on');
+              document.addEventListener('transitionend',function(){
+                  flag = false;
+                oLeft.classList.remove('on');
+                oWrip.style.backgroundImage =
+                oPre.style.backgroundImage = 'url(./bfanye' + index +'.jpg)'
+                console.log(index);
+                oNext.style.backgroundImage = 
+                oRight.style.backgroundImage = ' url(./bfanye' + (index + 1)%4 + '.jpg)'
+              });
+            }
+            
+        })(); //自执行函数
+    </script>
+</body>
+</html>
