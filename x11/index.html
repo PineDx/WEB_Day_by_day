@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拖拽导航</title>
+    <style>
+        body,ul{
+            padding: 0;
+            margin: 0;
+        }
+        ul{
+            position: relative;
+            list-style: none;
+            width: 100%;
+            height: 100%;
+        }
+        li{
+             width: 200px;
+            height: 120px;
+            float: left;
+            margin: 8px 8px;
+            border-radius: 8px;
+
+        }
+        img{
+            display: block;
+            width: 200px;
+            height: 120px;
+            border-radius: 8px;
+             margin: 8px 8px;
+        }
+        .nav{
+            width: 660px;
+            height: 400px;
+            margin: 50px auto;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <ul>
+            <li><img src="img/1.png" alt=""></li>
+            <li><img src="img/2.png" alt=""></li>
+            <li><img src="img/3.png" alt=""></li>
+            <li><img src="img/4.png" alt=""></li>
+            <li><img src="img/5.png" alt=""></li>
+            <li><img src="img/6.png" alt=""></li>
+            <li><img src="img/7.png" alt=""></li>
+            <li><img src="img/8.png" alt=""></li>
+            <li><img src="img/9.png" alt=""></li>
+        </ul>
+    </div>
+    <script>
+        var oitem = document.querySelectorAll("li"),
+            listli = [],
+            oNav = document.querySelector('.nav');
+        for(let i = 0,len = oitem.length;i<len;i++)
+        {   
+            
+            //单线程语言
+            listli.push([oitem[i].offsetLeft,oitem[i].offsetTop]);
+            //设置一个定时器拖延执行
+            setTimeout(() => {
+                
+                oitem[i].style.position = "absolute";
+                oitem[i].style.left = listli[i][0] + "px";
+                oitem[i].style.top = listli[i][1] + "px";
+                oitem[i].style.margin = 0;
+            }, 0);
+        }
+        oNav.addEventListener("mousedown",drag);
+        document.addEventListener("mousemove",drag);
+        document.addEventListener("mouseup", drag);
+        var toggle = false,
+            x1,y1,sX,sY,ele,z=1,goal;
+        function drag(e){
+            e = e || window.event;
+            e.preventDefault();
+            switch(e.type){
+                case "mousedown":
+                if(e.target.parentNode.tagName=== "LI")
+                {
+                    toggle = true;
+                    ele = e.target.parentNode;//当前点中的li值
+                    x1 = e.clientX;
+                    y1 = e.clientY;
+                    sX = ele.offsetLeft;
+                    sY = ele.offsetTop;
+                    ele.style.zIndex = z++;
+                    
+                }
+                    break;
+                case "mousemove":
+                if(toggle){ //事件节流
+                    var x2 = e.clientX;
+                    var y2 = e.clientY;
+                    var nx = sX+x2 -x1;
+                    var ny = sY+y2 -y1;
+                    var xr = x2-oNav.offsetLeft;
+                    var yr = y2-oNav.offsetTop;
+                    ele.style.left = nx +'px';
+                    ele.style.top = ny +'px';
+                    
+                    for(let i = 0, len = oitem.length; i < len; i++){
+                        
+                        oitem[i].style.transform = "";
+                        if(
+                            ele  != oitem[i]&&
+                            xr > oitem[i].offsetLeft&&
+                            xr< oitem[i].offsetLeft+200&
+                            yr > oitem[i].offsetTop&&
+                            yr < oitem[i].offsetTop+120
+                        ){  
+                            oitem[i].style.transform = "scale(1.1)";
+                            goal = oitem[i];   
+                        }
+                    }
+                }
+                    break;
+                case "mouseup":
+                toggle = false;
+                if(goal){
+                    ele.style.left = goal.offsetLeft+"px";
+                    ele.style.top = goal.offsetTop + "px";
+                    goal.style.left = sX + "px";
+                    goal.style.top = sY + "px";
+                    goal.style.transform = "";
+                    goal = null;
+                }
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>
