@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美化输入框</title>
+    <style>
+        div{
+            width: 200px;
+            height: 30px;
+            border: solid 1px #ccc;
+            margin: 10px 0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        input{
+            outline: none;
+            border: none;
+            width: 150px;
+            height: 30px;
+            padding-left: 10px;
+        }
+        input[type='text']:focus{
+            color: #333;
+            font-size: 16px;
+        }
+        input[type='password']:focus{
+            color: #ee32ff;
+        }
+        .username input:nth-child(1){
+            background-color:rgb(225, 252, 252);
+        }
+        .pass input:nth-of-type(1){
+            background-color: rgb(223, 204, 204);
+        }
+        .username>input+span::after{
+            content: "✎";
+            color: black;
+            font-size: 20px;
+        }
+        .pass>input+span::after{
+            content: "➹";
+            color: black;
+            font-size: 20px;
+        }
+        .email>input+span::after{
+            content: "✿";
+            font-size: 20px;
+        }
+
+        span:hover{
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="username">
+        <input type="text" required>
+        <span></span>
+    </div>
+    <div class="pass">
+        <input type="password" required>
+        <span></span>
+    </div>
+    <div class="email">
+        <input type="email">
+        <span></span>
+    </div>
+</body>
+
+</html>
