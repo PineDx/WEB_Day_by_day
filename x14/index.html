@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>弹性盒模型练习01</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        main{
+            height: 100vh;
+            display: flex;  /*弹性布局*/
+            flex-direction: column; /*改变布局方向*/
+        }
+        content{
+            flex: 1;
+            background-color: #ddd;
+        }
+        footer{
+            height: 60px;
+            background:linear-gradient(to right,#cc2 ,#ddd,#f3f3f3,#eee);
+            display: flex;
+            justify-content: space-evenly; /*内容平均分配*/
+        }
+        footer div{
+            flex: 1; /*m每个div独占1*/
+            font-size: 16px;
+            text-align: center;
+            line-height: 2.5em;
+        }
+        footer div:nth-child(n+2){
+            border-left: 1px dashed black;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <content>
+            <h1>titile</h1>
+        </content>
+        <footer>
+            <div>flex练习</div>
+            <div>必须掌握</div>
+            <div>改变世界</div>
+            <div>改变世界</div>
+            <div>改变世界</div>
+        </footer>
+    </main>
+</body>
+</html>
