@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单练习</title>
+    <style>
+        body{
+            width: 100vw;
+            height: 100vh;
+            padding: 0;
+            margin: 0;
+            background-color: #0984e3;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        main{
+            position: relative;
+            height: 300px;
+            width: 300px;
+            border: 5px solid #fff;
+            box-sizing: border-box;
+            box-shadow: 0px 0px 10px #fff;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        main>div{
+            width: 200px;
+            height: 50px;
+            margin-bottom: 20px;
+            padding: 6px;
+        }
+        main>div>label{
+            font-size: 15px;
+            font-weight: bold;
+            color: #ecf0f1;
+        }
+        input{
+            display: block;
+            margin-top: 10px;
+            padding-left: 10px;
+            box-sizing: border-box;
+            outline: none;
+            border: 0;
+            border-radius: 4px;
+            font-size: 16px;
+            width: 100%;
+            height: 30px;
+            box-shadow: 0px  -6px #ccc;
+            transition: 0.6s;
+        }
+        input:hover{
+            box-shadow: 0px 5px #fff;
+            background-color:#74b9ff ;
+        }
+        main>div>button{
+            display: block;
+            width: 120px;
+            height: 40px;
+            border: 3px solid #fff;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #ecf0f1;
+            background-color: #0984e3;
+            margin: 15px auto;
+            cursor: pointer;
+            transition: 0.6s;
+        }
+        main>div>button:hover{
+            border: 3px solid #2d3436;
+        }
+        main>div>button:active{
+            border: 2px solid #fff;
+        }
+        #msg{
+            width: 300px;
+            height: 50px;
+            border: 5px solid #fff;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            font-size: 16px;
+            font-weight: bolder;
+            text-align: center;
+            line-height: 2em;
+            color: #eb4d4b;
+            display: none;
+        }
+        #close{
+            position: absolute;
+            top: -7px;
+            right: 7px;
+            width: 10px;
+            height: 10px;
+            font-size: 24px;
+            font-weight: bolder;
+            color: #e74c3c;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="msg">
+        fdsfsdaf
+    </div>
+    <main>
+        <div id="close">×</div>
+        <div>
+            <label for="name">用户名:</label>
+            <input type="text" id="text" required>
+        </div>
+        <div>
+            <label for="pwd">密码:</label>
+            <input type="password" id="pwd" required>
+        </div>
+        <div>
+            <button id="btn">提交按钮</button>
+        </div>
+    </main>
+    <script>
+        var Obut = document.querySelector('#btn'),
+             Otext = document.querySelector('#text'),
+             Opwd = document.querySelector('#pwd'),
+             Omsg = document.querySelector('#msg'),
+             Oclose = document.querySelector('#close');
+        Obut.onclick = function(){
+            text = Otext.value;
+            pwd = Opwd.value;
+            
+            if(/\W+/.test(text)){
+                msg('用户名有特殊字符！');
+                return;
+            }
+            
+            if(Opwd.value.length < 6){
+                msg('密码低于6位数！');
+                return;          
+            }
+        }
+        Otext.onmousedown = function(e){
+            Omsg.style.display = 'none';
+        };
+        function msg(e){   
+            Omsg.innerText = e;
+            Omsg.style.display = 'block';
+        }
+        Oclose.onclick = function(){
+            
+            window.close();
+            
+        }
+    </script>
+</body>
+</html>
