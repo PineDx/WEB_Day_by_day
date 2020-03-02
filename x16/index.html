@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>帧动画</title>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #eee333;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        div{
+            margin-bottom: 10px;
+        }
+        .x01{
+            width: 200px;
+            height: 200px;
+            background-color: bisque;
+            animation-name: x01;
+            animation-duration: 4s;
+        }
+        @keyframes x01{
+            from{
+                width: 250px;
+                height: 210px;
+                transform: rotate(45deg) scale(2);
+            }
+            to{
+                transform: rotate(135deg);
+                background-color: black;
+            }
+        }
+        .x02{
+            width: 400px;
+            height: 400px;
+            border: 1px solid #000;
+        }
+        .x02>div{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            animation-name: x02;
+            animation-duration: 3s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+        }
+        @keyframes x02{
+            25%{
+                transform: translateX(100px);
+                border-radius: 10px;
+                background-color: chocolate;
+            }
+            50%{
+                transform: translate(100px,100px);
+                border-radius: 50px;
+            }
+            75%{
+                transform: translateX(100px);
+            }
+            100%{
+                transform: rotate(89deg);
+                background-color: lightblue;
+            }
+        }
+        .x03{
+             width: 100px;
+            height: 100px;
+            background-color: #ccc;
+            animation-name: x03;
+            animation-duration: 1s;
+            animation-direction: reverse;
+        }
+        @keyframes x03{
+            from{
+                transform: scale(4);
+                background-color: lemonchiffon;
+            }
+            to{
+                transform: rotate(60deg);
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="x01"></div>
+    <div class="x02">
+        <div></div>
+    </div>
+    <div class="x03"></div>
+</body>
+</html>
