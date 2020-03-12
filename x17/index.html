@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JAVAScript对象</title>
+  </head>
+  <body>
+    <h1>属性的基本操作方法F12</h1>
+    <script>
+        // 面向过程
+      // let user = {};
+      // user.age = 12;
+      // user.show = function(){
+      //     return `${this.age}这么大个人了`;
+      // };
+      // console.log(user.age);
+      // console.log(user.show());
+
+      // delete user.age;
+
+      // console.log(user.age);
+
+    //   面向对象
+      // let lisi = {
+      //         name: "李四",
+      //         age: 22,
+      //         grade: {
+      //             math: 99,
+      //             english: 67
+      //         },
+      //         //平均成绩
+      //         avgGrade: function () {
+      //             let total = 0;
+      //             for (const key in this.grade) {
+      //                 total += this.grade[key];
+      //             }
+      //             return total / this.propertyCount("grade");
+      //         },
+      //         //获取属性数量
+      //         propertyCount: function (property) {
+      //             let count = 0;
+      //             for (const key in this[property]) count++;
+      //             return count;
+      //         }
+      //     };
+      // console.log(lisi.avgGrade());
+
+      //   对象内的指针问题
+      // let xj = {
+      //         name: "Songlinyiyi",
+      //         show() {
+      //             return this.name;
+      //         }
+      //     };
+      //     let hd = xj;
+      //     // xj = null;
+      //     console.log(hd.show());
+
+      //   解构赋值
+      //   let user = { name: "Songlin", age: 117 };
+      //   let { name, age } = user;
+      //   console.log(age);
+
+      //   function fu() {
+      //     return { name: "xuci", age: 12 };
+      //   }
+
+      //   let { name, age } = fu();
+      //   console.log(name);
+
+    //   数组需要用[]来解构，对象需要用{}解构
+      let arr = ['songlin',23];
+      let [name,age] = arr;
+      console.log(name,age);
+    </script>
+  </body>
+</html>
