@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js返回顶部demo</title>
+    <style>
+        body{
+            width: 100vw;
+            height: 13000px;
+            background:linear-gradient(to top left, #e056fd, #686de0,#eb4d4b,#f0932b,#dff9fb,#686de0);
+        }
+        #gotop{
+            position:fixed;
+            top:200px;
+            right: 10px;
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <div id="gotop"></div>
+    <script>
+        let html = document.documentElement,
+         link = document.getElementById('gotop');
+        link.onclick = function(){
+            let step = 86;
+            let timer = setInterval(()=>{
+                let celtop = html.scrollTop;
+                if (celtop === 0) {
+                    clearInterval(timer)
+                }
+                celtop -= step;
+                html.scrollTop = celtop;
+            },15);
+        }
+    </script>
+</body>
+</html>
