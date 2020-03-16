@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>构建函数</title>
+  </head>
+  <body>
+    <script>
+      // 通过工厂函数来构建对象
+      // function Production(name, age) {
+      //     return {
+      //         name,
+      //     age,
+      //     show(){
+      //         console.log(name + "的年龄是" +age);
+      //     }
+      //     }
+      // }
+
+      // let xm = new Production("songlin", 12);
+      // let xn = new Production("shangjin", 20);
+      // xm.show();
+      // xn.show();
+
+      //对象的封装与抽象
+      // function User(name, age) {
+      //     let data = {name, age};
+      //     let info = function(){
+      //         console.log(data.name + data.age);
+      //     }
+      // }
+
+      // let xm = new User("songlin", 20);
+      // // xm.name = "ccc";
+      // // xm.info = function(){
+      // //     console.log(0);
+      // // }
+      // console.log(xm);
+      // xm.info();
+
+      // 控制对象的属性
+      "use strict";
+      const user = {
+        name: "xm",
+        age: 18
+      };
+      //   let desc = Object.getOwnPropertyDescriptors(user);
+      //   console.log(JSON.stringify(desc, null, 2));
+      // 封闭对象
+      //   Object.seal(user);
+      //   console.log(Object.isSealed(user));
+      // 冻结对象
+      // Object.freeze(user);
+      // user.name = "xj";
+    </script>
+  </body>
+</html>
