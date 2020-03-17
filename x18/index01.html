@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>js对象属性访问器</title>
+  </head>
+  <body>
+    <script>
+      //   const web = {
+      //     name: "后盾人",
+      //     url: "houdunren.com",
+      //     get site() {
+      //       return `${this.name} ${this.url}`;
+      //     },
+      //     set site(value) {
+      //       [this.name, this.url] = value.split(",");
+      //     }
+      //   };
+      //   web.site = "后盾人,hdcms.com";
+      //   console.log(web.site);
+
+      //   let Request = {
+      //     get token() {
+      //       let con = localStorage.getItem("token");
+      //       if (!con) {
+      //         alert("请登录后获取token");
+      //       } else {
+      //         return con;
+      //       }
+      //     },
+      //     set token(con) {
+      //       localStorage.setItem("token", con);
+      //     }
+      //   };
+      // //   Request.token = 'houdunren'
+      //   console.log(Request.token);
+
+      // let user = {
+      //     data:{name: "xm", age: 21},
+      //     set name(value) {
+      //         this.data.name = value;
+      //     },
+      //     get name() {
+      //         return this.data.name;
+      //     }
+      // }
+      // console.log(user.name);
+      // console.log(user);
+
+      function User(name, age) {
+        let data = { name, age };
+        Object.defineProperties(this, {
+          name: {
+            get() {
+              return data.name;
+            },
+            set(value) {
+              if (value.trim() == "") throw new Error("无效的用户名");
+              data.name = value;
+            }
+          },
+          age: {
+            get() {
+              return data.name;
+            },
+            set(value) {
+              if (value.trim() == "") throw new Error("无效的用户名");
+              data.name = value;
+            }
+          }
+        });
+      }
+      let hd = new User("后盾人", 33);
+      console.log(hd.name);
+      hd.name = "向军1";
+      console.log(hd.name);
+      console.log(hd);
+    </script>
+  </body>
+</html>
