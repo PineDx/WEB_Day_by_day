@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>proxy代理</title>
+  </head>
+  <body>
+
+    <input type="text" v-model="title" />
+    <input type="text" v-model="title" />
+    <h3 v-bind="title"></h3>
+    <script>
+        // vue双向绑定代理实现
+        function View(){
+            let proxy = new Proxy({},
+            {
+                get(obj,property) {},
+                set(obj, property, value) {
+                    obj[property] = value;
+                    let uplist = document
+                    .querySelectorAll(
+                        `[v-model="${property}"],[v-bind="${property}"]`
+                        );
+                    uplist.forEach(item => {
+                        item.value = value;
+                        item.innerHTML = value;
+                    });
+                }
+            });
+            this.Init = function(){
+                const els = document.querySelectorAll("[v-model]");
+                els.forEach(item => {
+                    item.addEventListener("keyup", function(){
+                        proxy[this.getAttribute("v-model")] = this.value;
+                    });
+                });
+            };
+        }
+        new View().Init();
+
+
+
+
+
+      // 代理对普通对象进行拦截
+      // let user = {name: "xm", age: 21};
+      // let userProxy = new Proxy(user,{
+      //     get(self, pro) {
+      //         return self[pro];
+      //     },
+      //     set(self, pro, value) {
+      //         self[pro] = value;
+      //     }
+      // });
+
+      // console.log(user.name);
+      // userProxy.name = "xmmmm";
+      // console.log(userProxy.name);
+
+      // 代理对函数进行代理
+      //   function factorial(num) {
+      //     return num == 1 ? 1 : num * factorial(num - 1);
+      //   }
+      //   let proxy = new Proxy(factorial, {
+      //     apply(func, obj, args) {
+      //       console.time("run");
+      //       func.apply(obj, args);
+      //       console.timeEnd("run");
+      //     }
+      //   });
+      //   proxy.apply(this, [1, 2, 3]);
+
+    </script>
+  </body>
+</html>
