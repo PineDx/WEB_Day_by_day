@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON</title>
+  </head>
+  <body>
+    <script>
+      //   let hd = {
+      //     title: "后盾人",
+      //     url: "houdunren.com",
+      //     teacher: {
+      //       name: "向军大叔"
+      //     }
+      //   };
+      //   let jsonStr = JSON.stringify(hd);
+      //   console.log(JSON.parse(jsonStr));
+      let hd = {
+        title: "后盾人",
+        url: "houdunren.com",
+        teacher: {
+          name: "向军大叔"
+        }
+      };
+      let jsonStr = JSON.stringify(hd);
+      console.log(
+        JSON.parse(jsonStr, (key, value) => {
+          if (key == "title") {
+            return `[推荐] ${value}`;
+          }
+          return value;
+        })
+      );
+    </script>
+  </body>
+</html>
