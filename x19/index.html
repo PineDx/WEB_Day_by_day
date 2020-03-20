@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>js原型链</title>
+  </head>
+  <body>
+    <script>
+      //   function User() {}
+      //   User.__proto__.view = function() {
+      //     console.log("User function view method");
+      //   };
+      //   User.view();
+
+      //   User.prototype.show = function() {
+      //     console.log("后盾人");
+      //   };
+      //   let hd = new User();
+      //   hd.show();
+      //   console.log(User.prototype == hd.__proto__);
+      //   let hd = new Object();
+      //   hd.name = "后盾人";
+      //   Object.prototype.show = function() {
+      //     console.log("hodunren.com");
+      //   };
+      //   hd.show();
+
+      //   function User() {}
+      //   let xj = new User();
+      //   xj.show();
+      //   User.show();
+      //   console.log(xj.__proto__ == User.prototype);
+      //   let hd = {};
+      //   let parent = { name: "parent" };
+      //   Object.setPrototypeOf(hd, parent);
+      //   console.log(hd);
+      //   console.log(Object.getPrototypeOf(hd));
+      //   function hd() {
+      //     this.show = function() {
+      //       return "show method";
+      //     };
+      //   }
+      //   const obj = new hd(); //true
+      //   console.dir(hd)
+      //   console.dir(obj)
+      //   console.log(obj instanceof hd);
+
+      //   const obj2 = new obj.constructor();
+      //   console.dir(obj2.show()); //show method
+      // function User(name, age) {
+      //   this.name = name;
+      //   this.age = age;
+      // }
+
+      // function createByObject(obj, ...args) {
+      //   const constructor = Object.getPrototypeOf(obj).constructor;
+      //   return new constructor(...args);
+      // }
+
+      // let hd = new User("后盾人");
+      // let xj = createByObject(hd, "向军", 12);
+      // console.log(xj);
+
+      // console.dir(xm);
+      // xm.show();
+
+      // function Createobject(obj, ...args) {
+      //   const constr = Object.getPrototypeOf(obj).constructor;
+      //   return new constr(...args);
+      // }
+      // let xn = Createobject(xm, "233", 233);
+      // let xb = new  User("xb",21);
+      // let xn = new  User.prototype.constructor("xn",22);
+      // console.dir(xb instanceof User && xn instanceof User);
+      // console.dir(User);
+      // console.dir(User.prototype.constructor);
+
+      let a = {
+        name: "a"
+      };
+      let b = {
+        name: "b"
+      };
+
+      console.dir(a);
+      console.dir(b);
+
+      Object.setPrototypeOf(a, b);
+      Object.setPrototypeOf(b,a);
+    </script>
+  </body>
+</html>
