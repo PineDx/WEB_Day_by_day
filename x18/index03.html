@@ -16,22 +16,34 @@
       //   };
       //   let jsonStr = JSON.stringify(hd);
       //   console.log(JSON.parse(jsonStr));
-      let hd = {
-        title: "后盾人",
-        url: "houdunren.com",
-        teacher: {
-          name: "向军大叔"
-        }
-      };
-      let jsonStr = JSON.stringify(hd);
-      console.log(
-        JSON.parse(jsonStr, (key, value) => {
-          if (key == "title") {
-            return `[推荐] ${value}`;
-          }
-          return value;
-        })
-      );
+      // let hd = {
+      //   title: "后盾人",
+      //   url: "houdunren.com",
+      //   teacher: {
+      //     name: "向军大叔"
+      //   }
+      // };
+      // let jsonStr = JSON.stringify(hd);
+      // console.log(
+      //   JSON.parse(jsonStr, (key, value) => {
+      //     if (key == "title") {
+      //       return `[推荐] ${value}`;
+      //     }
+      //     return value;
+      //   })
+      // );
+
+      let xn = {name: "xn_box", sex: "girl", happy: "football"};
+      let xm = {url:"wwww.pine.com"};
+
+      Object.setPrototypeOf(xn,xm);
+
+      for (let key in xn){
+        if(xn.hasOwnProperty(key))
+        console.log(key,xn[key]);
+      }
+
+
     </script>
   </body>
 </html>
