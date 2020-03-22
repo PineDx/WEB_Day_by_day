@@ -25,7 +25,7 @@
       // };
       // let jsonStr = JSON.stringify(hd);
       // console.log(
-      //   JSON.parse(jsonStr, (key, value) => {
+      //   JSON.parse(jsonStr, (key, value) =>  C {
       //     if (key == "title") {
       //       return `[推荐] ${value}`;
       //     }
@@ -33,16 +33,39 @@
       //   })
       // );
 
-      let xn = {name: "xn_box", sex: "girl", happy: "football"};
-      let xm = {url:"wwww.pine.com"};
+      // let xn = {name: "xn_box", sex: "girl", happy: "football"};
+      // let xm = {url:"wwww.pine.com"};
 
-      Object.setPrototypeOf(xn,xm);
+      // Object.setPrototypeOf(xn,xm);
 
-      for (let key in xn){
-        if(xn.hasOwnProperty(key))
-        console.log(key,xn[key]);
+      // for (let key in xn){
+      //   if(xn.hasOwnProperty(key))
+      //   console.log(key,xn[key]);
+      // }
+      let xn = {
+        childone(){
+          console.log("childone");
+        }
+      };
+      let xm = {
+        childtwo(){
+          console.log("childtwo");
+        }
+      };
+      let parent = {
+        parent(){
+          console.log("parent");
+        }
+      };
+      function User(){
+        console.log("this.user");
       }
 
+      console.dir(xn);
+      console.log(Object.getPrototypeOf(xn));
+      console.log(xn.__proto__ === Object.prototype);
+      console.dir(User);
+      console.log(User.prototype.__proto__ == Object.prototype);
 
     </script>
   </body>
