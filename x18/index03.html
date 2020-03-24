@@ -42,31 +42,49 @@
       //   if(xn.hasOwnProperty(key))
       //   console.log(key,xn[key]);
       // }
-      let xn = {
-        childone(){
-          console.log("childone");
-        }
-      };
-      let xm = {
-        childtwo(){
-          console.log("childtwo");
-        }
-      };
-      let parent = {
-        parent(){
-          console.log("parent");
-        }
-      };
-      function User(){
-        console.log("this.user");
+      // let xn = {
+      //   childone(){
+      //     console.log("childone");
+      //   }
+      // };
+      // let xm = {
+      //   childtwo(){
+      //     console.log("childtwo");
+      //   }
+      // };
+      // let parent = {
+      //   parent(){
+      //     console.log("parent");
+      //   }
+      // };
+      // function User(){
+      //   console.log("this.user");
+      // }
+
+      // console.dir(xn);
+      // console.log(Object.getPrototypeOf(xn));
+      // console.log(xn.__proto__ === Object.prototype);
+      // console.dir(User);
+      // console.log(User.prototype.__proto__ == Object.prototype);
+      function extend(sub, sup) {
+        sub.prototype = Object.create(sup.prototype);
+        sub.prototype.constructor = sub;
+      }
+      function User(name, age){
+        this.name = name;
+        this.age = age;
+      }
+      User.prototype.show = function(){
+        console.log(this.name,this.age);
       }
 
-      console.dir(xn);
-      console.log(Object.getPrototypeOf(xn));
-      console.log(xn.__proto__ === Object.prototype);
-      console.dir(User);
-      console.log(User.prototype.__proto__ == Object.prototype);
+      function Member(...args){
+        User.apply(this,args);
+      }
 
+      extend(Member, User);
+      let xn = new Member("xbn",21);
+      xn.show();
     </script>
   </body>
 </html>
