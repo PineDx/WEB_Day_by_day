@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jsClass</title>
+</head>
+<body>
+    <script>
+        class User{
+            constructor(name, age, sex){
+                this.data = {};
+                this.name = name;
+                this.age = age;
+                this.sex = sex;
+            }
+            set name(name){
+                if(/^[a-z]+/.test(name)){
+                    this.data.name =  name;
+                }else {
+                    throw new Error("字母数字吓下划线");
+                }
+            }
+            get name(){
+                return this.data.name;
+            }
+        }
+
+        let xn = new User("topxuren1", 21, "female");
+        console.log(xn.name);
+    </script>
+</body>
+</html>
