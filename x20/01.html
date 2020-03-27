@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>js异步</title>
+  </head>
+  <body>
+    <script>
+        console.log("start");
+      setTimeout(() => {
+        console.log("settimeout0");
+      });
+      new Promise(resolve => {
+        console.log("promise0");
+        setTimeout(() => {
+            console.log("settimeout1");
+            new Promise((resolve)=>{
+                console.log("promise1");
+                resolve();
+            }).then(()=>{
+                console.log("then1");
+                setTimeout(()=>{
+                    console.log("settimeout2");
+                });
+            });
+          resolve();
+        });
+      }).then(() => {
+        console.log("then0");
+      });
+      console.log("同步代码块");
+    </script>
+  </body>
+</html>
