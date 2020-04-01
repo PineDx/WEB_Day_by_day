@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise语法糖</title>
+</head>
+<body>
+    <script>
+        // 相当于返回了一个promise
+        // 可以用then来接收并处理
+        // async function xm() {
+        //     return new Promise(resolve => {
+        //         resolve("xm");
+        //     },rejset =>{
+        //         rejset("|error");
+        //     });
+        // }
+        
+        // xm().then(v=>{
+        //     console.log(v);
+        // });
+
+        // async function xm(){
+        //     let name = await "www.pine.cn";
+        //     console.log(name);
+        // }
+        // xm();
+        (()=>{
+            console.log(11231);
+            console.log(this);
+        })();
+    </script>
+</body>
+</html>
