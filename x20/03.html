@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>宏任务和微任务</title>
+    <style>
+      #line {
+        width: 400px;
+        height: 20px;
+        border-radius: 12px;
+        border: 1px solid #cccccc;
+        overflow: hidden;
+      }
+      #progress {
+        width: 0%;
+        height: 20px;
+        background: linear-gradient(
+          45deg,
+          #f566ff ,
+          rgb(26, 147, 245) 
+        );
+        text-align: center;
+        color: azure;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="line">
+      <div id="progress">0%</div>
+    </div>
+    <script>
+      (function auto() {
+        let progress = document.querySelector("#progress");
+        let rate = 0;
+        function run() {
+          progress.style.width = rate + "%";
+          progress.innerHTML = rate + "%";
+          
+          if (++rate <= 100) {
+            setTimeout(run, 40);
+          }
+        }
+        run();
+      })();
+    </script>
+  </body>
+</html>
